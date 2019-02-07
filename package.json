@@ -1,0 +1,11 @@
+{
+  "name": "musicnotifier",
+  "version": "1.0.0",
+  "description": "A program to help you find and follow new music",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "start"
+  },
+  "author": "Nicholas James",
+  "license": "ISC"
+}
