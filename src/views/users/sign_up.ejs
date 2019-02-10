@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../static/partials/head.ejs %>
+    </head>
+    <body>
+
+        <% include ../static/partials/navbar.ejs %>
+
+        <main class="container" style="padding-top: 5%">
+            <% include ../static/partials/messages.ejs %>
+            <h1 style="padding-left: 30%;">Sign up</h1>
+
+            <form action="/users" method="post" style="padding-left: 30%;">
+
+                <div class="form-group">
+                    <label for="first">First Name</label>
+                    <input type="text" class="form-control" name="first" aria-describedby="firstHelp" placeholder="Enter first name">
+                </div>
+
+                <div class="form-group">
+                    <label for="last">Last Name</label>
+                    <input type="text" class="form-control" name="last" aria-describedby="lastHelp" placeholder="Enter last name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small class="text-muted" id="emailHelp">email address must be a valid address</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" aria-describedby="passwordHelp" placeholder="Enter password">
+                    <small class="text-muted" id="passwordHelp">password must match confirmation below</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="passwordConfirmation">Password confirmation</label>
+                    <input type="password" class="form-control" name="passwordConfirmation" aria-describedby="passwordHelp" placeholder="Enter password confirmation">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Sign up</button>
+            </form>
+        </main>
+        <% include ../static/partials/footer.ejs %>
+        <% include ../static/partials/baseScripts.ejs %>
+
+    </body>
+</html>

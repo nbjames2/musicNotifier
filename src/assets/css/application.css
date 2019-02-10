@@ -42,3 +42,7 @@ main{
 .navbar-brand{
     margin-left: 40%;
 }
+
+.form-group{
+    width: 50%;
+}

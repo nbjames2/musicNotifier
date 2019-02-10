@@ -5,5 +5,6 @@ const routeConfig = require("./config/route-config.js");
 
 appConfig.init(app, express);
 routeConfig.init(app);
+app.use(express.static("src/assets"));
 
 module.exports = app;
