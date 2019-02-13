@@ -26,6 +26,18 @@ module.exports = {
         } else {
             return next();
         }
+    },
+    validateSearch(req, res, next) {
+        if(req.method === "POST") {
+            req.checkBody("query", "Please enter an artist to search for").isLength({min: 1});
+        }
+        const errors = req.validationErrors();
+        if(errors){
+            req.flash("error", errors);
+            return res.redirect(303, req.headers.referer);
+        } else {
+            return next();
+        }
     }
 
 }

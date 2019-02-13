@@ -7,6 +7,15 @@
         <%include ./partials/navbar.ejs %>
         <main class="container">
             <% include ./partials/messages.ejs %>
+            <% if(currentUser) { %>
+                    <div class="col-auto" style="margin-top: 3%;">
+                        <form action="/music/search" method="post" style="padding-left: 30%;">
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" name="query" aria-describedby="queryHelp" placeholder="Search artist">
+                            </div>
+                        </form>
+                    </div>
+            <% } %>
         </main>
         <% include ./partials/footer.ejs %>
         <% include ./partials/baseScripts.ejs %>
