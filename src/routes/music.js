@@ -6,6 +6,6 @@ const musicController = require("../controllers/musicController");
 
 router.post("/music/search", validation.validateSearch, musicController.searchArtist);
 router.get("/music/artistview/:id", musicController.viewArtist);
-
+router.get("/music/addfavourite/:id", musicController.addFavourite);
 
 module.exports = router;

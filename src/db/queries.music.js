@@ -1,5 +1,7 @@
+const Follow = require ("./models").Follow;
+
 module.exports = {
-    pullArtists(search, callback){
+    newFollow(id, userId, callback){
         
     }
 }

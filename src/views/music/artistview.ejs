@@ -16,10 +16,12 @@
                         </form>
                     </div>
                     <% if(artist) { %>
-                        <div class="text-center">
-                            <h2><%= artist.name %></h2>
-                            
-                        </div>
+                        <div class="row justify-content-center">
+                                <h2><%= artist.name %></h2>
+                                <a href="/music/addfavourite/<%= artist.id %>">
+                                    <img style="margin-left: 5%;" src="/favourite_border.svg" alt="add favourite icon">
+                                </a>
+                            </div>
                         <div class="card" style="width: 50%; background: none; border: none; margin-left: 25%;">
                             <% albums.items.forEach((album) => { %>
                                     <div class="card" style="background-color: #ffffff; opacity: 0.5; margin-bottom: 2%;">
