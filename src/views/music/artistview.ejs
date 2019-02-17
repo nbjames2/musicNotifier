@@ -19,7 +19,11 @@
                         <div class="row justify-content-center">
                                 <h2><%= artist.name %></h2>
                                 <a href="/music/addfavourite/<%= artist.id %>">
-                                    <img style="margin-left: 5%;" src="/favourite_border.svg" alt="add favourite icon">
+                                    <% if(!followed) { %>
+                                        <img style="margin-left: 5%;" src="/favourite_border.svg" alt="add favourite icon">
+                                    <% } else { %>
+                                        <img style="margin-left: 5%;" src="/favourite.svg" alt="add favourite icon">
+                                    <% } %>
                                 </a>
                             </div>
                         <div class="card" style="width: 50%; background: none; border: none; margin-left: 25%;">

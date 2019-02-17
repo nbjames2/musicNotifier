@@ -48,7 +48,7 @@ describe("routes : users", () => {
                     User.findOne({where: {email: "user@example.com"}})
                     .then((user) => {
                         expect(user).not.toBeNull();
-                        expect(user.first).toBe(bob);
+                        expect(user.first).toBe("bob");
                         expect(user.email).toBe("user@example.com");
                         expect(user.id).toBe(1);
                         done();

@@ -50,7 +50,7 @@ describe("User", () => {
             });
         });
 
-        it("shouild not create a User with an email already taken", (done) => {
+        it("should not create a User with an email already taken", (done) => {
             User.create({
                 first: "bob",
                 last: "bob",
