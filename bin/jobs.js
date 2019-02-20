@@ -1,12 +1,12 @@
 const schedule = require('node-schedule');
-notifyController = require("./notifyController");
+notifyController = require("../src/controllers/notifyController");
 const sgMail = require('@sendgrid/mail');
 const api_key = process.env.SEND_GRID_KEY;
 sgMail.setApiKey(api_key);
 
 const rule = new schedule.RecurrenceRule();
-rule.hour = 20;
-rule.minute = 42;
+rule.hour = 01;
+rule.minute = 57;
 
 const j = schedule.scheduleJob(rule, function(){
     notifyController.checkNew;
