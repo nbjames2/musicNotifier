@@ -5,7 +5,8 @@ const api_key = process.env.SEND_GRID_KEY;
 sgMail.setApiKey(api_key);
 
 const rule = new schedule.RecurrenceRule();
-rule.hour = 22;
+rule.hour = 17;
+rule.minute = 00;
 
 const j = schedule.scheduleJob(rule, function(){
     notifyController.checkNew;
@@ -13,7 +14,7 @@ const j = schedule.scheduleJob(rule, function(){
         to: 'nbjames2@gmail.com',
         from: 'nbjames2@gmail.com',
         subject: 'Music Notifier run',
-        text: 'Schedule has been run.'
+        text: 'Schedule has been run at ' + new Date()
     };
     sgMail.send(msg);
 })
