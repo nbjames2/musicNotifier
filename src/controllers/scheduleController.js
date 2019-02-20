@@ -5,7 +5,7 @@ const api_key = process.env.SEND_GRID_KEY;
 sgMail.setApiKey(api_key);
 
 const rule = new schedule.RecurrenceRule();
-rule.hour = 17;
+rule.hour = 02;
 rule.minute = 00;
 
 const j = schedule.scheduleJob(rule, function(){
