@@ -6,6 +6,12 @@ const passportConfig = require("./passport-config");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const flash = require("express-flash");
+const cronJob = require('cron').CronJob;
+notifyController = require("../controllers/notifyController");
+const sgMail = require('@sendgrid/mail');
+const api_key = process.env.SEND_GRID_KEY;
+sgMail.setApiKey(api_key);
+
 
 module.exports = {
     init(app, express){
@@ -26,5 +32,18 @@ module.exports = {
             next();
         });
         app.use(express.static(path.join(__dirname, "..", "assets")));
+        
+        const myJob = new cronJob('00 02 * * 0-6', function(){
+            console.log("scheduled with cron");
+            notifyController.checkNew();
+            const msg = {
+                to: 'nbjames2@gmail.com',
+                from: 'nbjames2@gmail.com',
+                subject: 'Music Notifier run',
+                text: 'Schedule has been run at ' + new Date()
+            };
+            sgMail.send(msg);    
+        });
+        myJob.start();
     }
 };

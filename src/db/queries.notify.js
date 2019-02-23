@@ -12,7 +12,7 @@ module.exports = {
                 console.log(artist.name);
                 Follow.findAll({
                     where: {
-                        artistId: release.artists[0].id
+                        artistId: artist.id
                     }
                 })
                 .then((follows) => {
@@ -20,11 +20,10 @@ module.exports = {
                         Contacted.findOne({
                             where: {
                                 userId: follow.userId,
-                                artistId: follow.artistId,
                                 albumId: release.id
                             }
                         })
-                        then((contacted) => {
+                        .then((contacted) => {
                             if(!contacted){
                                 User.findById(follow.userId)
                                 .then((user) => {
@@ -37,8 +36,11 @@ module.exports = {
                                     sgMail.send(msg);
                                     Contacted.create({
                                         userId: user.id,
-                                        artistId: release.artist.id,
+                                        artistId: artist.id,
                                         albumId: release.id
+                                    })
+                                    .then((contacted) => {
+                                        console.log("created contacted");
                                     })
                                     .catch((err) => {
                                         callback(err);

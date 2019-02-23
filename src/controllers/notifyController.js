@@ -4,7 +4,7 @@ const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 
 module.exports = {
-    checkNew(req, res, next){
+    checkNew(){
         const authOptions = {
             url: 'https://accounts.spotify.com/api/token',
             headers: {
@@ -31,9 +31,7 @@ module.exports = {
                     const newReleases = body.albums.items;
                     notifyQueries.notify(newReleases, (err, callback) => {
                         if(!err || callback == "complete"){
-                            console.log("Autoran at " + new Date());
-                            req.flash("notice", "Checked for new releases...");
-                            res.redirect("/");
+                            console.log("Ran at " + new Date());
                         }
                     })
                 });           
