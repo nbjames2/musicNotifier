@@ -6,7 +6,7 @@ const passportConfig = require("./passport-config");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const flash = require("express-flash");
-const cronJob = require('cron').CronJob;
+const schedule = require('node-schedule');
 notifyController = require("../controllers/notifyController");
 const sgMail = require('@sendgrid/mail');
 const api_key = process.env.SEND_GRID_KEY;
@@ -33,8 +33,7 @@ module.exports = {
         });
         app.use(express.static(path.join(__dirname, "..", "assets")));
         
-        const myJob = new cronJob('00 02 * * 0-6', function(){
-            console.log("scheduled with cron");
+        var job = schedule.scheduleJob('13 02 * * *', function(){
             notifyController.checkNew();
             const msg = {
                 to: 'nbjames2@gmail.com',
@@ -44,6 +43,5 @@ module.exports = {
             };
             sgMail.send(msg);    
         });
-        myJob.start();
     }
 };
