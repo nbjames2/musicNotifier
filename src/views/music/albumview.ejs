@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% include ../static/partials/head.ejs %>
+    </head>
+    <body>
+        <%include ../static/partials/navbar.ejs %>
+        <main class="containers">
+            <% include ../static/partials/messages.ejs %>
+            <% if(currentUser) { %>
+                    <div class="album-content">
+                        <form action="/music/search" method="post" class="searchform">
+                                <input type="text" class="form-control" name="query" aria-describedby="queryHelp" placeholder="Search artist">
+                                <button type="submit" class="btnsearch"><img src="/icon-search.svg" class="imgsearch"></button>
+                        </form> 
+                        <h3><%= album.artists[0].name %></h3>
+                        <h4><%= album.name %></h4> 
+                        <div class="track-container bg">        
+                            <% if(album.tracks) { %>
+                                <% tracks.forEach((track) => { %>
+                                    <div class="tracks">
+                                        <div>
+                                            <%= track.track_number %>: <%= track.name %>
+                                        </div>
+                                        <div>
+                                            <%= Math.floor(track.duration_ms / 60000) %>:<%= ((track.duration_ms % 60000) / 1000).toFixed(0) < 10 ? '0' : '' %><%= ((track.duration_ms % 60000) / 1000).toFixed(0) %>
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            <% } %>
+                        </div>
+                    </div>
+            <% } %>
+        </main>
+        <% include ../static/partials/footer.ejs %>
+        <% include ../static/partials/baseScripts.ejs %>
+    </body>
+</html>

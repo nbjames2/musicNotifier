@@ -1,38 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head class="bg">
+    <head>
         <% include ../static/partials/head.ejs %>
     </head>
     <body>
         <%include ../static/partials/navbar.ejs %>
-        <main class="container">
+        <main class="containers">
             <% include ../static/partials/messages.ejs %>
             <% if(currentUser) { %>
-                    <div class="col-auto" style="margin-top: 3%; margin-bottom: 3%;">
-                        <form action="/music/search" method="post" style="padding-left: 30%;">
-                            <div class="col-lg-7">
+                <div class="albums-content">
+                    <div class="form-container">
+                        <form action="/music/search" method="post" class="searchform">
                                 <input type="text" class="form-control" name="query" aria-describedby="queryHelp" placeholder="Search artist">
-                            </div>
+                                <button type="submit" class="btnsearch"><img src="/icon-search.svg" class="imgsearch"></button>
                         </form>
                     </div>
                     <% if(artist) { %>
-                        <div class="row justify-content-center">
-                                <h2><%= artist.name %></h2>
-                                <a href="/music/addfavourite/<%= artist.id %>">
-                                    <% if(!followed) { %>
-                                        <img style="margin-left: 5%;" src="/favourite_border.svg" alt="add favourite icon">
-                                    <% } else { %>
-                                        <img style="margin-left: 5%;" src="/favourite.svg" alt="add favourite icon">
-                                    <% } %>
-                                </a>
-                            </div>
-                        <div class="card" style="width: 50%; background: none; border: none; margin-left: 25%;">
+                        <div class="form-container">
+                            <h2><%= artist.name %></h2>
+                            <a href="/music/addfavourite/<%= artist.id %>">
+                                <% if(!followed) { %>
+                                    <img src="/favourite_border.svg" alt="add favourite icon">
+                                <% } else { %>
+                                    <img src="/favourite.svg" alt="remove favourite icon">
+                                <% } %>
+                            </a>
+                        </div>
+                        <div class="all-albums">
                             <% albums.items.forEach((album) => { %>
-                                    <div class="card" style="background-color: #ffffff; opacity: 0.5; margin-bottom: 2%;">
-                                        <div class="card-body text-center">
-                                                <p class="card-text" style="font-size: 1.5em;"><%= album.name %></p>
+                                <a href="/music/album/<%= album.id %>">
+                                    <div class="album">
+                                        <% if(album.images[0]) { %>
+                                            <div class="artistimg-container">
+                                                <img src="<%= album.images[0].url %>" class="artist-img" alt="picture of artist">
+                                            </div>
+                                        <% } else { %>
+                                            <div>
+                                                <div class="empty-image">
+                                                    <p class="noimage">No Image Available</p>
+                                                </div>
+                                            </div>
+                                        <% } %>
+                                        <div>
+                                            <h5><%= album.name %></h5>
+                                            <p>Released: <%= album.release_date %></p>
                                         </div>
                                     </div>
+                                </a>
                             <% }) %>
                         </div>
                     <% } %>

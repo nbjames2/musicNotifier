@@ -104,5 +104,37 @@ module.exports = {
                 res.redirect(`/music/artistview/${req.params.id}`);
             }
         })
+    },
+    getAlbum(req, res, next) {
+        const query = req.params.albumId;
+        const authOptions = {
+            url: 'https://accounts.spotify.com/api/token',
+            headers: {
+                'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+            },
+            form: {
+                grant_type: 'client_credentials'
+            },
+            json: true
+        };
+
+        request.post(authOptions, function(error, response, body) {
+            if (!error && response.statusCode === 200) {
+                const token = body.access_token;
+                const options = {
+                    url: 'https://api.spotify.com/v1/albums/' + query,
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    },
+                    json: true
+                };         
+                            
+                request.get(options, function(error, response, body) {
+                    album = body;
+                    tracks = body.tracks.items;
+                    res.render("music/albumview", {album, tracks});
+                });  
+            }
+        });
     }
 }

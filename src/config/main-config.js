@@ -33,7 +33,7 @@ module.exports = {
         });
         app.use(express.static(path.join(__dirname, "..", "assets")));
         
-        var job = schedule.scheduleJob('13 02 * * *', function(){
+        var job = schedule.scheduleJob('00 02 * * *', function(){
             notifyController.checkNew();
             const msg = {
                 to: 'nbjames2@gmail.com',

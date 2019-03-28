@@ -1,9 +1,9 @@
 html{
     height: 100%;
+    width: 100%;
 }
 
 body{
-    padding-top: 54px;
     background-image: url(../bgimage.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -11,18 +11,191 @@ body{
     max-width: 100%;
     height: 100%;
     overflow: auto;
-}
-
-nav{
-    background-color: #ff9900;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 .bg{
     background-color: #ff9900;
 }
 
+.middle {
+    grid-column: 2 / 3;
+}
+
+/* Navbar */
+
+nav {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    justify-items: center;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+.nav-title {
+    color: black;
+    font-size: 30px;
+}
+
+.nav-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto;
+}
+
+.navbar-item {
+    padding: 0px 10px;
+}
+
+.logo{
+    height: 50px;
+}
+
+/* Content Container */
 main{
-    height: 90%;
+    height: 100%;
+}
+
+.containers {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+    grid-auto-rows: min-content;
+    justify-items: center;
+}
+
+h1 {
+    grid-column: 2 / 3;
+    margin-top: 100px;
+}
+
+.index-search {
+    padding-top: 200px; 
+}
+
+.content {
+    grid-column: 2 / 3;
+    grid-template-rows: auto 1fr;
+    display: grid;
+    grid-gap: 20px;
+}
+
+.searchform {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding-top: 20px;
+    width: 300px;
+}
+
+.form-container {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.imgsearch {
+    height: 30px;
+}
+
+/* Artist search */
+
+.artists {
+    background: #ff9900;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.artistimg-container {
+    padding: 10px;
+}
+
+.empty-image {
+    width:120px;
+    margin: 10px;
+    height: 120px;
+    background: rgba(0, 0, 0, 0.1);
+    color:black;
+    font-size: 1em;
+}
+
+.artist-img{
+    width: 120px;
+}
+
+.artist-name {
+    color: black;
+    font-size: 1.5em;
+    padding: 0 30px;
+}
+
+/* Album listing */
+
+.albums-content {
+    grid-column: 2 / 3;
+    grid-template-rows: auto auto 1fr;
+    display: grid;
+    grid-gap: 20px;
+    width: 100%;
+}
+
+.all-albums {
+    display: grid;    
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+.album {
+    background: #ff9900;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-gap: 10px;
+    justify-items: center;
+    align-items: center;
+    color: black;
+    font-weight: 100;
+}
+
+/* Album view */
+
+.album-content {
+    grid-column: 2 / 3;
+    grid-template-rows: auto auto 1fr;
+    display: grid;
+    grid-gap: 20px;
+    justify-items: center;
+}
+
+.track-container {
+    display: grid;
+    
+}
+
+.tracks {
+    background: #ff9900;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    grid-auto-flow: column;
+    padding: 10px 20px;
+}
+
+.btnsearch {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.btnsearch:hover {
+    background: rgba(0, 0, 0, 0.2)
 }
 
 .bgimage{
@@ -30,25 +203,27 @@ main{
     height: auto;
 }
 
-.logo{
-    height: 50px;
-}
+    /* Sign-in / up */
 
+    .signin {
+        display: grid;
+        grid-template-rows: fit-content(1fr);
+        grid-column: 2 / 3;
+        grid-gap: 20px;
+    }
+    
+    #btn-signin {
+        justify-self: right;
+        width: 100px;
+    }
+
+/* Footer */
 .footer{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 7%;
-    text-align: center;
-    font-size: 1.4em;
-    padding-bottom: 2%;
-}
-
-.navbar-brand{
-    margin-left: 40%;
-}
-
-.form-group{
-    width: 50%;
+    grid-row: span 1 / -1;
+    grid-column: 1 / -1;
+    display: grid;
+    padding: 20px;
+    justify-items: center;
+    align-items: center;
+    margin-top: 20px;
 }

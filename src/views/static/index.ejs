@@ -5,14 +5,13 @@
     </head>
     <body>
         <%include ./partials/navbar.ejs %>
-        <main class="container">
+        <main class="containers">
             <% include ./partials/messages.ejs %>
             <% if(currentUser) { %>
-                    <div class="col-auto" style="margin-top: 3%;">
-                        <form action="/music/search" method="post" style="padding-left: 30%;">
-                            <div class="col-lg-7">
+                    <div class="content index-search">
+                        <form action="/music/search" method="post" class="searchform">
                                 <input type="text" class="form-control" name="query" aria-describedby="queryHelp" placeholder="Search artist">
-                            </div>
+                                <button type="submit" class="btnsearch"><img src="/icon-search.svg" class="imgsearch"></button>
                         </form>
                     </div>
             <% } %>
