@@ -9,16 +9,16 @@ const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
 let sequelize;
-if (config.use_env_variable) {
-  console.log('USE ENV VARIABLE');
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize('notifier_prod', 'postgres', 'TnDY2Mg7dvrZeWW452ZkKYc6UF6ymVr9', {
-    host: 'postgres',
-    dialect: 'postgres',
-    operatorsAliases: false
-  });
-}
+// if (config.use_env_variable) {
+//   console.log('USE ENV VARIABLE');
+//   sequelize = new Sequelize(process.env[config.use_env_variable], config);
+// } else {
+sequelize = new Sequelize('notifier_prod', 'postgres', 'TnDY2Mg7dvrZeWW452ZkKYc6UF6ymVr9', {
+  host: 'postgres',
+  dialect: 'postgres',
+  operatorsAliases: false
+});
+// }
 sequelize.authenticate()
   .then(result => {
     console.log('DATABASE CONNECTED');
