@@ -6,4 +6,6 @@ RUN npm i -g sequelize-cli@5.4.0
 RUN npm install --production --silent && mv node_modules ../
 COPY . .
 
+EXPOSE 5000
+
 CMD [ "npm", "start" ]

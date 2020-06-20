@@ -13,7 +13,6 @@ if (config.use_env_variable) {
   console.log('USE ENV VARIABLE');
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  console.log('USE HARD CODED');
   sequelize = new Sequelize('notifier_prod', 'postgres', 'TnDY2Mg7dvrZeWW452ZkKYc6UF6ymVr9', {
     host: 'postgres',
     dialect: 'postgres',
