@@ -18,6 +18,11 @@
     "operatorsAliases": false
   },
   "production": {
-    "use_env_variable": "DATABASE_URL"
+    "username": "postgres",
+    "password": "TnDY2Mg7dvrZeWW452ZkKYc6UF6ymVr9",
+    "database": "notifier_prod",
+    "host": "postgres",
+    "dialect": "postgres",
+    "logging": true
   }
 }
