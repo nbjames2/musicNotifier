@@ -11,10 +11,12 @@ module.exports = {
         passport.use(new LocalStrategy({
             usernameField: "email"
         }, (email, password, done) => {
+            console.log('EMAIL', email)
             User.findOne({
                 where: { email }
             })
             .then((user) => {
+                console.log('USER', user);
                 if(!user || !authHelper.comparePass(password, user.password)){
                     return done(null, false, { message: "Invalid email or password" });
                 }
@@ -22,11 +24,13 @@ module.exports = {
             })
         }));
         passport.serializeUser((user, callback) => {
+            console.log('SERIALIZE', user);
             callback(null, user.id);
         });
         passport.deserializeUser((id, callback) => {
             User.findById(id)
             .then((user) => {
+                console.log('DESERIALIZE', user);
                 callback(null, user);
             })
             .catch((err) => {

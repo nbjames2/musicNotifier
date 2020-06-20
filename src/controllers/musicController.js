@@ -1,8 +1,8 @@
 const passport = require("passport");
 const request = require('request');
 musicQueries = require("../db/queries.music");
-const client_id = process.env.CLIENT_ID;
-const client_secret = process.env.CLIENT_SECRET;
+const client_id = process.env.SPOTIFY_CLIENT_ID;
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 
 module.exports = {
     searchArtist(req, res, next) {

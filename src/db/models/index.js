@@ -10,10 +10,23 @@ const db = {};
 
 let sequelize;
 if (config.use_env_variable) {
+  console.log('USE ENV VARIABLE');
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  console.log('USE HARD CODED');
+  sequelize = new Sequelize('notifier_prod', 'postgres', 'TnDY2Mg7dvrZeWW452ZkKYc6UF6ymVr9', {
+    host: 'postgres',
+    dialect: 'postgres',
+    operatorsAliases: false
+  });
 }
+sequelize.authenticate()
+  .then(result => {
+    console.log('DATABASE CONNECTED');
+  })
+  .catch(err => {
+    console.log('SOMETHING DONE GOOFED', err);
+  })
 
 fs
   .readdirSync(__dirname)

@@ -1,4 +1,4 @@
-const app = require("./app");
+const app = require("./src/app");
 const http = require("http");
 
 const port = normalizePort(process.env.PORT || "3000");
